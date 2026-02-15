@@ -10,40 +10,26 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "anthropic/claude-sonnet-4-20250514",
-        "fallbacks": ["anthropic/claude-3-5-haiku-20241022"]
+        "primary": "anthropic/claude-sonnet-4-20250514"
       },
-      "workspace": "/home/openclaw/workspace",
-      "compaction": {
-        "mode": "safeguard"
-      },
-      "maxConcurrent": 4
+      "workspace": "/home/openclaw/workspace"
     }
   },
   "gateway": {
     "mode": "local",
-    "bind": "0.0.0.0",
+    "host": "0.0.0.0",
     "port": 18789,
-    "controlUi": {
-      "enabled": true,
-      "allowInsecureAuth": true
-    },
     "auth": {
-      "mode": "token",
-      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+      "mode": "none"
     }
   },
   "hooks": {
     "enabled": true,
-    "path": "/hooks",
-    "token": "${OPENCLAW_HOOKS_TOKEN}"
+    "path": "/hooks"
   },
   "channels": {
     "webchat": {
       "enabled": true
     }
-  },
-  "messages": {
-    "ackReactionScope": "group-mentions"
   }
 }
