@@ -34,12 +34,8 @@ USER openclaw
 ENV HOME=/home/openclaw
 ENV PATH="/home/openclaw/.npm-global/bin:$PATH"
 
-# Expose port (Railway sets PORT env var)
+# Expose port
 EXPOSE 18789
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:${PORT:-18789}/health || exit 1
-
-# Start OpenClaw Gateway
-CMD ["openclaw", "gateway", "--foreground"]
+# Start OpenClaw Gateway - run in foreground mode
+CMD ["openclaw", "gateway"]
