@@ -30,12 +30,13 @@ RUN chown -R openclaw:openclaw /home/openclaw
 # Switch to app user
 USER openclaw
 
-# Environment
+# Environment - tell OpenClaw where config is
 ENV HOME=/home/openclaw
+ENV OPENCLAW_CONFIG=/home/openclaw/.openclaw/openclaw.json
 ENV PATH="/home/openclaw/.npm-global/bin:$PATH"
 
 # Expose port
 EXPOSE 18789
 
-# Start OpenClaw Gateway - run in foreground mode
-CMD ["openclaw", "gateway"]
+# Start OpenClaw Gateway with allow-unconfigured flag
+CMD ["openclaw", "gateway", "--allow-unconfigured"]
